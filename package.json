@@ -1,0 +1,29 @@
+{
+  "name": "trial1",
+  "version": "1.0.0",
+  "description": "sih 2020 trial1",
+  "main": "app.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-session": "^1.4.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "expresss": "^0.0.0",
+    "html-pdf": "^2.2.0",
+    "mongoose": "^5.9.3",
+    "nodejs": "^0.0.0",
+    "nodemon": "^2.0.0",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0"
+  },
+  "devDependencies": {
+    "env-cmd": "^8.0.2"
+  },
+  "scripts": {
+    "start": "node app.js",
+    "dev": "env-cmd ./config1/dev.env nodemon app.js"
+  },
+  "author": "me",
+  "license": "ISC",
+  "keywords": []
+}

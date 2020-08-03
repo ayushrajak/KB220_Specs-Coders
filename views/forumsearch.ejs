@@ -1,0 +1,168 @@
+<html>
+    <head>
+      <title>Community support</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="/css/stylesheet.css">
+      <link rel="icon" href="/img/pic3.png">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+      <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+          integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+          crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+          integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+          crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+          crossorigin="anonymous"></script>
+        <script
+        src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+        crossorigin="anonymous"></script> 
+        <script src="/js/forumlodge.js"></script> 
+        <script src="/js/forumsearch.js"></script> 
+
+        <style></style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    </head>
+    <body>
+      <%- include('partials/header') %>
+      <nav class="navbar navbar-expand-lg navbar-light">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                  <a  class="nav-link" onclick="w3_open()">POST</a>
+  
+                </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/profile/complaint=">Lodge Complain</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/profile">My Profile</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="/aboutus">About Us</a>
+                  </li>
+                  <!-- <li class="nav-item">
+                    <button id="openNav" class="nav-link" onclick="w3_open()">&#9776;/POST</button>
+  
+                  </li> -->
+              </ul>
+          </div>
+      </nav>
+        <script>
+            function w3_open() {
+              document.getElementById("main").style.marginLeft = "25%";
+              document.getElementById("mySidebar").style.width = "25%";
+              document.getElementById("mySidebar").style.display = "block";
+              document.getElementById("openNav").style.display = 'none';
+            }
+            function w3_close() {
+              document.getElementById("main").style.marginLeft = "0%";
+              document.getElementById("mySidebar").style.display = "none";
+              document.getElementById("openNav").style.display = "inline-block";
+            }
+            </script>
+        <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
+            <button class="w3-bar-item w3-button w3-large"
+            onclick="w3_close()">Close &times;</button>
+            <form id="forumfor"class = "complaint" style="
+            padding: 22%;
+        ">
+                <input style="margin-top: 10%;" type="text"  id = "forname" name ="item"   placeholder="Your Name" class="form-control" required>
+                  <input style="margin-top: 10%;" type="text"   id = "forcom"  placeholder="Your Complain" class="form-control" required>
+                          <input style="margin-top: 10%;" type="text"   id = "forexp"  placeholder="Your Expierience" class="form-control" required>
+                          <input style="margin-top: 10%;" type="text"   id="forcat"   placeholder="Your Category"  class="form-control"   required/>
+                     
+                    
+                        <input style="margin-top: 10%;" type="text" id="foruni" placeholder="Your University" class="form-control" required>
+                <!-- <input type="text" id="com" onKeyUp="check_val()" placeholder="Describe your Problem here" class="form-control" required></input>
+                <p id="bad_notice"></p> -->
+                <button style="margin-top: 10%;" id="forum"  type="submit" class="form-btn">SUBMIT</button><br>
+    
+                 </div>
+                <!-- <button id="forum"  type="submit" class="form-btn">SUBMIT</button><br> -->
+            </form>
+          </div>
+          
+          <div id="main">
+          
+          <!-- <div class="w3-teal">
+            <button id="openNav" class="w3-button w3-teal w3-xlarge" onclick="w3_open()">&#9776;/POST</button>
+            <div class="w3-container">
+                <h1>DICUSSION FORUM </h1>
+              </div>
+            </div> -->
+        </div>
+        <!-- <form id="forumfor"class = "complaint">
+            <input type="text"  id = "forname" name ="item"   placeholder="Your Name" class="form-control" required>
+              <input type="text"   id = "forcom"  placeholder="Your Complain" class="form-control" required>
+                      <input type="text"   id = "forexp"  placeholder="Your Expierience" class="form-control" required>
+                      <input type="text"   id="forcat"   placeholder="Your Category"  class="form-control"   required/>
+                 
+                
+                    <input type="text" id="foruni" placeholder="Your University" class="form-control" required>
+         
+
+
+             </div>
+            <button id="forum"  type="submit" class="form-btn">SUBMIT</button><br>
+        </form> -->
+        <!-- <form style="margin: 1%;" id = "formsea"class="forumchaljaa">
+          <input style="margin-top: 1%;" type="text" id="forsea" placeholder="Search from expieriences" class="uniqueclass" required>
+
+          <span><button id="seduce" type="submit">SEARCH </button></span>
+      </form> -->
+        <% for(var i=0; i< list.length ;i++){%>
+            <!-- <p><%= list[i]["complain"]%></p> -->
+            <div class="w3-container">
+              
+                <!-- <h2>Avatar List</h2>
+                    
+                <p>You can combine w3-ul and the w3-bar classes to create an avatar list:</p> -->
+                <ul class="w3-ul w3-card-4" style="    margin: 20px;">
+                  <% var str = list[i]["complain"]%>
+                  <% var word =list["word"] %>
+                  <%if (str.includes(word)){%>
+                    <li class="w3-bar">
+                        <!-- <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span> -->
+                        <!-- <img src="img_avatar2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px"> -->
+                       
+                        <div class="w3-bar-item">
+                         
+                          <span class="w3-large"> <strong>WHAT WAS MY COMPLAIN:-</strong> <%= list[i]["complain"]%></span><br>
+                          <span><strong>Solution proposed:- </strong> <%= list[i]["expierience"]%></span>
+                        </div>
+                    <%  } %>
+                  <% if(word== undefined){%>
+                  <li class="w3-bar">
+                    <!-- <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right">×</span> -->
+                    <!-- <img src="img_avatar2.png" class="w3-bar-item w3-circle w3-hide-small" style="width:85px"> -->
+                   
+                    <div class="w3-bar-item">
+                     
+                      <span class="w3-large"> <strong>WHAT WAS MY COMPLAIN:-</strong> <%= list[i]["complain"]%></span><br>
+                      <span><strong>Solution proposed:- </strong> <%= list[i]["expierience"]%></span>
+                    </div>
+                    <% }%>
+                  </li>
+            </ul>
+            </div>
+            
+            <%  } %>
+
+
+    </body>
+
+</html>

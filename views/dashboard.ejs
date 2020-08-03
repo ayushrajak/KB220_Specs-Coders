@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="/js/complainoperation.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+  <!-- <link rel="stylesheet" href="/css/stylesheet.css" /> -->
+  <link rel="stylesheet" href="/css/dashboard.css" />
+  <link rel="icon" href="/img/pic3.png" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+      crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+  <title>Admin Dashboard</title>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Home</a>
+            </li>
+            <li>
+              <a class="nav-link" href="/">Log Out</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/university">University Level Complaint</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/admin/department">Department level complaint</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/admin/institute">Institution level complaint</a>
+          </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/aboutus">About Us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+  <% var clos=0%>
+  <% var active=0%>
+  <% var forward=0%>
+  <% var resolve=0%>
+  <% var users=0%>
+  <% var finance=0%>
+  <% var exam=0%>
+  <% var reval=0%>
+  <% var admission=0%>
+  <% var lecture=0%>
+
+
+  <% for(var i=0; i< list.length ;i++){%>
+  <%users++%>
+  <% var complain = list[i]["Complaint"] %>
+  <% for(var j=0; j< complain.length ;j++){%>
+  <%if (complain[j]["complain_status"] == "Not Resolved"){%>
+  <%active++%>
+  <%  } %>
+  <%if (complain[j]["complain_status"] == "Complain Resolved"){%>
+  <%resolve++%>
+  <%  } %>
+  <%if (complain[j]["complain_status"] == "Complain Forwarded"){%>
+  <%forward++%>
+  <%  } %>
+  <%if (complain[j]["complain_status"] == "Close"){%>
+  <%clos++%>
+  <%  } %>
+  <%if (complain[j]["category"] == "Finance"){%>
+  <%finance++%>
+  <%  } %>
+  <%if (complain[j]["category"] == "Examination"){%>
+  <%exam++%>
+  <%  } %>
+  <%if (complain[j]["category"] == "Revaluation"){%>
+  <%reval++%>
+  <%  } %>
+  <%if (complain[j]["category"] == "Admission"){%>
+  <%admission++%>
+  <%  } %>
+  <%if (complain[j]["category"] == "Lecture Time-Table/Learning"){%>
+  <%lecture++%>
+  <%  } %>
+  <%  } %>
+
+  <%  } %>
+  <% var total= active + resolve%>
+
+
+  <div class="row">
+    <div class="leftcolumn">
+      <div class="card">
+        <div class="row">
+          <div class="column">
+            <div class="cardinner">
+              <h3>Total Users</h3>
+              <p><%=users%></p>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="cardinner">
+              <h3>Total Grievances</h3>
+              <p id="total"><%=total%></p>
+              <!-- <p>Some text</p> -->
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="cardinner">
+              <h3>Active Grievances</h3>
+              <p id="active"><%=active%></p>
+              <!-- <p>Some text</p> -->
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="cardinner">
+              <h3>Resolved Grievances</h3>
+              <p id="resolve"><%=resolve%></p>
+              <!-- <p>Some text</p> -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2 style="text-align: center;">visc</h2>
+        <script>$(function () {
+            $("#bars li .bar").each(function (key, bar) {
+              var percentage = $(this).data('percentage');
+
+              $(this).animate({
+                'height': percentage + '%'
+              }, 1000);
+            });
+          });
+          </script>
+
+        <div class="baru" id="chart">
+          <ul id="numbers">
+            <li><span>000%</span></li>
+            <li><span>100%</span></li>
+            <li><span>90%</span></li>
+            <li><span>80%</span></li>
+            <li><span>70%</span></li>
+            <li><span>60%</span></li>
+            <li><span>50%</span></li>
+            <li><span>40%</span></li>
+            <li><span>30%</span></li>
+            <li><span>20%</span></li>
+            <li><span>10%</span></li>
+          </ul>
+
+          <ul id="bars">
+            <li>
+              <div data-percentage=<%= ((admission/total)*100) %> class="bar"></div><span>Admission</span>
+            </li>
+            <li>
+              <div data-percentage=<%= ((finance/total)*100) %> class="bar"></div><span>Finance</span>
+            </li>
+            <li>
+              <div data-percentage=<%= ((exam/total)*100) %> class="bar"></div><span>Examination</span>
+            </li>
+            <li>
+              <div data-percentage=<%= ((reval/total)*100) %> class="bar"></div><span>Revaluation</span>
+            </li>
+            <li>
+              <div data-percentage=<%= ((lecture/total)*100) %> class="bar"></div><span>TimeTable</span>
+            </li>
+            <!-- <li>
+              <div data-percentage=<%= ((finance/total)*100) %> class="bar"></div><span>Ragging</span>
+            </li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="rightcolumn">
+      <div class="card" id="piechart">
+        
+
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+        <script type="text/javascript">
+          // Load google charts
+          google.charts.load('current', { 'packages': ['corechart'] });
+          google.charts.setOnLoadCallback(drawChart);
+          var active = document.getElementById("active").innerText;
+          var a = parseInt(active)
+          var resolve = document.getElementById("resolve").innerText;
+          var r = parseInt(resolve)
+          var clos = document.getElementById("close").innerText;
+          var c = parseInt(clos)
+
+
+          // Draw the chart and set the chart values
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Complaints', 'STATUS'],
+              ['Active', a],
+              ['Resolved', r],
+              ['Close', c],
+              ['Forwarded', 2],
+              //   ['Sleep', 8]
+            ]);
+
+            // Optional; add a title and set the width and height of the chart
+            var options = { 'title': 'Complaint Status' };
+
+            // Display the chart inside the <div> element with id="piechart"
+            var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+            chart.draw(data, options);
+          }
+        </script>
+      </div>
+      <div class="card">
+        <h3>Actions</h3>
+        <div class="fakeimg"> <a href="/admin/university">View all Complaints</a></div><br>
+        <div class="fakeimg"> <a href="/admin/users">View all Users</a> </div><br>
+        <div class="fakeimg"><a href="#">Search and Resolve</a></div>
+      </div>
+      <div class="card">
+        <h3>For More Info.</h3>
+        <div style="">
+    <a href="#"><i class="fa fa-dribbble"></i></a> 
+    <a href="#"><i class="fa fa-twitter"></i></a>  
+    <a href="#"><i class="fa fa-linkedin"></i></a>  
+    <a href="#"><i class="fa fa-facebook"></i></a> 
+  </div>
+      </div>
+    </div>
+  </div>
+
+  
+  <%- include('partials/footer') %>
+</body>
+
+</html>

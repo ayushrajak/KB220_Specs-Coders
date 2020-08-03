@@ -1,0 +1,257 @@
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+  <link rel="stylesheet" href="/css/stylesheet.css" />
+  <link rel="icon" href="/img/pic3.png" />
+  <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+  <title>Student Grievence System</title>
+  <style>
+    * {box-sizing: border-box}
+    body {font-family: Verdana, sans-serif; margin:0}
+    .mySlides {display: none}
+    img {vertical-align: middle;}
+    
+    /* Slideshow container */
+    .slideshow-container {
+      max-width: inherit;
+      position: relative;
+      margin: auto;
+    }
+    
+    /* Next & previous buttons */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      padding: 16px;
+      margin-top: -22px;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      transition: 0.6s ease;
+      border-radius: 0 3px 3px 0;
+      user-select: none;
+    }
+    
+    /* Position the "next button" to the right */
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+    
+    /* On hover, add a black background color with a little bit see-through */
+    .prev:hover, .next:hover {
+      background-color: rgba(0,0,0,0.8);
+    }
+    
+    /* Caption text */
+    .text {
+      color: #f2f2f2;
+      font-size: 15px;
+      padding: 8px 12px;
+      position: absolute;
+      bottom: 8px;
+      width: 100%;
+      text-align: center;
+    }
+    
+    /* Number text (1/3 etc) */
+    .numbertext {
+      color: #f2f2f2;
+      font-size: 12px;
+      padding: 8px 12px;
+      position: absolute;
+      top: 0;
+    }
+    
+    /* The dots/bullets/indicators */
+    .dot {
+      cursor: pointer;
+      height: 15px;
+      width: 15px;
+      margin: 0 2px;
+      background-color: #bbb;
+      border-radius: 50%;
+      display: inline-block;
+      transition: background-color 0.6s ease;
+    }
+    
+    .active, .dot:hover {
+      background-color: #717171;
+    }
+    
+    /* Fading animation */
+   
+    
+  
+    /* On smaller screens, decrease text size */
+    @media only screen and (max-width: 300px) {
+      .prev, .next,.text {font-size: 11px}
+    }
+    </style>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+
+        <% if(user){%>
+        <li>
+          <a class="nav-link" href="/auth/logout">Logout</a>
+        </li>
+
+        <%}%>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/profile/complaint">Lodge Complain</a>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="/aboutus">About Us</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+ <div class="row">
+   <div class="leftcolumn">
+    <div class="slideshow-container card1">
+
+      <div class="mySlides">
+        <div class="numbertext">1 / 3</div>
+        <center><a href="#"><img src="/img/slider1.jpg" alt="students" style="width:750px;"></a></center>
+        
+      </div>
+      
+      <div class="mySlides">
+        <div class="numbertext">2 / 3</div>
+        <center><a href="/profile"><img src="/img/status.png" alt="view status" style="width:750px"></a></center>
+        
+      </div>
+      
+      <div class="mySlides">
+        <div class="numbertext">3 / 3</div>
+        <center><a href="/profile/complaint"><img src="/img/grievance.png" alt="Lodge Grievance" style="width:750px"></a></center>
+        
+      </div>
+      
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+      
+      </div>
+      <br>
+      
+      <div style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span> 
+        <span class="dot" onclick="currentSlide(2)"></span> 
+        <span class="dot" onclick="currentSlide(3)"></span> 
+      </div>
+      
+      <script>
+      var slideIndex = 1;
+      showSlides(slideIndex);
+      
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+      
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+      
+      function showSlides(n) {
+        var i;
+        var slides = document.getElementsByClassName("mySlides");
+        var dots = document.getElementsByClassName("dot");
+        if (n > slides.length) {slideIndex = 1}    
+        if (n < 1) {slideIndex = slides.length}
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";  
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex-1].style.display = "block";  
+        dots[slideIndex-1].className += " active";
+      }
+      </script>
+
+    <div class="card1">
+      <h2 style="text-align: center;">Student Grievence System</h2>
+      <div>
+        <p>The Online Student's Grievance Redressal System is a initiative taken by the University Grants Commission that 
+          facilitates students/complainants to lodge his or her grievance, send reminder and view status on action taken
+           with regard to their grievance(s). The basic aim of the portal is to ensure transparency in admissions, prevent 
+           unfair practices in higher educational institutions and provide a mechanism for redressal of their grievances.
+           The system also facilitates the universities to search and browse grievances lodged against their university 
+           and post action taken against the complaints on the portal as well as contact the complainant directly through 
+           e-mail, phone or by post.</p>
+        </div>
+
+    </div>
+  </div> 
+  
+  
+  
+  
+  <div class="rightcolumn">
+    <div class="card1">
+      <h3>
+                Login Using
+            </h3>
+                <form>
+              <div class="fakeimg"> <a href="/auth/google">Google+</a></div><br>
+              <div class="fakeimg"> <a href="/adminLogin">Admin Login</a> </div><br>
+</form>
+
+    </div>
+    <div class="card1">
+      <h3>Actions</h3>
+      <div class="fakeimg"> <a href="#">View Complaint Status</a></div><br>
+      <div class="fakeimg"> <a href="/forum">Access Forums</a> </div><br>
+      <div class="fakeimg"><a href="/aboutus">Who are we?</a></div>
+    </div>
+    <div class="card1">
+      <h3>Follow us on</h3>
+      <div >
+  <a href="#"><i class="fa fa-dribbble"></i></a> 
+  <a href="#"><i class="fa fa-twitter"></i></a>  
+  <a href="#"><i class="fa fa-linkedin"></i></a>  
+  <a href="#"><i class="fa fa-facebook"></i></a> 
+  <br>
+  <h4>Contact Us</h4>
+  <p>specscoders2@gmail.com</p>
+  <a href="/chatbot"><i style='font-size:48px' class='fas'>&#xf4ad;</i></a> 
+</div>
+    </div>
+  </div>
+</div>
+
+  <%- include('partials/footer') %>
+</body>
+
+</html>

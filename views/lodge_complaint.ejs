@@ -1,0 +1,184 @@
+<html>
+
+<head>
+
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+  <!-- <script src="/js/complaintlodge.js"></script> -->
+  <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+
+ 
+    <link rel="stylesheet" href="/css/stylesheet.css" />
+    <link rel="icon" href="/img/pic3.png" />
+  <title>Lodge Complain</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+  <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <!-- <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script> -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <%- include('partials/header') %>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+      aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Home</a>
+        </li>
+
+        <% if(user){%>
+        <li>
+          <a class="nav-link" href="/auth/logout">Logout</a>
+          <%}%>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile/complaint">Lodge Complain</a>
+      </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/aboutus">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+  <section>
+    <center>
+        <div class="form col-md-3">
+            <div id="headline1">
+                <div class="login_div">
+                  <p>Lodge Complain</p>
+                  <script src="https://smtpjs.com/v3/smtp.js"></script> 
+                  <script src="/js/complaintlodge.js"></script>
+                    <form class = "complaint">
+                      <input type="text"  id = "ide" name ="item"   placeholder="University Name" class="form-control" required>
+                      <input type="text"   id = "dsc"  placeholder="College Name" class="form-control" required>
+                      <input type="text"   id = "tcs"  placeholder="Branch" class="form-control" required>
+                      <input  style="display: none;" type="text" id="email" placeholder="email"  value = "<%= user.email_id %>" required/>
+                      <select id="mainlevel" name="level">
+                        <option value="dept">Department</option>
+                        <option value="inst">Institute</option>
+                        <option value="univ">University</option>
+                     </select>
+                      <label for="complaint">Choose your category:</label>
+                      <select id="category" name="complaint">
+                        <option value="Admission">Admission</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Examination">Examination</option>
+                        <option value="Lecture">Lecture Time-Table/Learning</option>
+                        <option value="Reval">Revaluation</option>
+                      </select>
+        <input type="text" id="enr" placeholder="Enrollement Number" class="form-control" required>
+        <input type="text" id="com" onKeyUp="check_val()" placeholder="Describe your Problem here" class="form-control" required></input>
+        <p id="bad_notice"></p>
+        <div id="select2" class="select">
+          <select name="slct" id="slct" class="university">
+            <option selected disabled>Priority of complaint</option>
+
+            <option id="#1">High</option>
+            <option id="#2" value="2">Medium</option>
+            <option id="#3" value="3">Low</option>
+
+          </select>
+           <div id="select3" class="select">
+          <select name="slct" id="anoy" class="university">
+            <option selected disabled>REGISTER COMPLAINT AS</option>
+
+            <option id="#1"><%= user.username%></option>
+            <option id="#2" value="2">ANONYMOUS</option>
+           
+
+          </select> 
+        </div>
+        <button id="sub" data-email="<%= user.email_id %>" type="submit" class="form-btn">SUBMIT</button><br>
+        </form>
+    </div>
+    </div>
+    </div>
+    </center>
+    </section>
+    <%- include('partials/footer') %>
+</body>
+<script type="text/javascript">
+  function check_val()
+  {
+   var bad_words=new Array("death","kill","murder","fuck","madarchod","bahenchod","idiot","shit","lodu","bc","mc","blowjob","bitch");
+   var check_text=document.getElementById("com").value;
+   var error=0;
+   for(var i=0;i<bad_words.length;i++)
+   {
+    var val=bad_words[i];
+    if((check_text.toLowerCase()).indexOf(val.toString())>-1)
+    {
+     error=error+1;
+    }
+   }
+    
+   if(error>0)
+   {
+    document.getElementById("bad_notice").innerHTML="WARNING: Some Bad Words In Your Text";
+    document.getElementById("sub").disabled = true;
+   }
+   else
+   {
+    document.getElementById("sub").disabled = false;
+    document.getElementById("bad_notice").innerHTML="";
+   }
+  }
+  </script>
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.0/annyang.min.js"></script>
+<script>
+if (annyang) {
+  // Let's define our first command. First the text we expect, and then the function it should call
+  var commands = {
+    'write university *tag': function(variable){
+      let unvi=document.getElementById("ide");
+      unvi.value=variable;
+    },
+
+    'write college name *tag': function(variable){
+      let clg=document.getElementById("dsc");
+      clg.value=variable;
+    },
+
+    'write branch name *tag': function(variable){
+      let brc=document.getElementById("tcs");
+     brc.value=variable;
+    },
+
+    'write roll number *tag': function(variable){
+      let enr1=document.getElementById("enr");
+      enr1.value=variable;
+    },
+
+    'write problem *tag': function(variable){
+      let prb=document.getElementById("com");
+      prb.value=variable;
+    },
+    
+
+    };
+
+
+  // Add our commands to annyang
+  annyang.addCommands(commands);
+
+  // Start listening. You can call this here, or attach this call to an event, button, etc.
+  annyang.start();
+}
+</script>
+</html>

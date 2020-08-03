@@ -1,0 +1,192 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <link rel="stylesheet" href="/css/stylesheet.css" />
+    <link rel="icon" href="/img/pic3.png" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+        integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <title>Admin</title>
+    <!-- <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script> -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/js/universitysearch.js"></script>
+    <script src="/js/complainoperation.js"></script>
+</head>
+
+<body>
+    <%- include('partials/header') %>
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Home</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/">Log Out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/university">University Level Complaint</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/department">Department level complaint</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/admin/institute">Institution level complaint</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/aboutus">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- <nav>
+            <ul>
+
+                <li><a href="/auth/logout">Logout</a></li>
+
+                <li><a href="/auth/login">Login</a></li>
+                <li><a href="/">Homepage</a></li>
+                <li><a href="/profile/complaint">Lodge Complaint</a></li>
+                <li><a href="/profile">Profile</a></li>
+            </ul>
+        </nav> -->
+        <form style="margin: 1%;" id = "sea"class="searc">
+            <span id="select2" class="select">
+                <select name="slct" id="slct" class="university">
+                    <option selected disabled>Select category of complain</option>
+
+                    <option id="#1">Finance</option>
+                    <option id="#2" value="2">Examination</option>
+                    <option id="#3" value="3">Admission</option>
+
+                </select>
+
+            </span>
+            <span><button id="sub" type="submit">SEARCH </button></span>
+        </form>
+        <form style="    margin-top: -3%;
+        margin-left: 21%;" id="day" class="daydate">
+            <span id="select4" class="select">
+                <select style="margin-left: 10%;" name="slct" id="dar" class="university">
+                    <option selected disabled>Select Day Of Complain</option>
+
+                    <option id="#1">Today</option>
+                    <option id="#2" value="2">YesterDay</option>
+                    <!-- <option id="#3" value="3">DayBefore YesterDay</option> -->
+
+                </select>
+
+            </span>
+            <span><button id="subday" type="submit">SEARCH </button></span>
+        </form>
+    <!-- <ul id="hui">
+
+            <% for(var i=0; i< list.length ;i++){%>
+            <div>
+                <strong> <%= list[i]["University_name"] %></strong>
+                <% var complain = list[i]["Complaint"] %>
+
+                <% for(var j=0; j< complain.length ;j++){%>
+                <%if (complain[j]["complain_status"] == "Not Resolved"){%>
+                <div>Complain no. <%=j+1%> : <strong>
+                        <span><%= complain[j]["complan"] %></span></strong>
+                    <span class="compid" style="display: none;"><%= complain[j]["id"] %></span>
+                </div>
+
+                <div> Status :- <%= complain[j]["complain_status"] %></div>
+                <div>Priority level :-<%= complain[j]["complain_priority"] %></div>
+                <span><button id=`close-${j}` class="cls" data-complain="<%= complain[j]['id'] %>">Close</button></span>
+                <span><button class="frwd" data-complain="<%= complain[j]['id'] %>">Forward</button></span>
+                <span><button class="res" data-complain="<%= complain[j]['id'] %>">Resolved</button></span>
+                <span>
+                    <form class="revi">
+                        <span><input type="text" class="review" placeholder="write a review on complaint" /><br></span>
+                        <span><button class="rev" type="submit" data-review=""
+                                data-complain="<%= complain[j]['id'] %>">Review</button></span>
+                    </form>
+                </span>
+                <div></div>
+                <br>
+                <p></p>
+                <%  } %>
+                <%  } %>
+                <%  } %>
+
+            </div>
+        </ul> -->
+<center>
+    <h2>Welcome Sir</h2>
+    <p>Active Complaints</p>
+    
+    <% for(var i=0; i< list.length ;i++){%>
+    <div class="w3-card-4" style="width: 500px;">
+        <header class="w3-container">
+
+            <% var complain = list[i]["Complaint"] %>
+            <% for(var j=0; j< complain.length ;j++){%>
+            <%if (complain[j]["complain_status"] == "Not Resolved"){%>
+            
+        </header>
+
+        <div class="w3-container">
+            
+            <div>
+                <h3><%= list[i]["username"] %></h3>
+                <p><%= list[i]["Branch_name"].toUpperCase() %> ,<%= list[i]["Institute_name"].toUpperCase() %></p>
+                <p><%= list[i]["University_name"].toUpperCase() %> </p>
+            </div>
+            <!-- for displaying image -->
+            <!-- <div class="col-md-2" style="right: 0;width: 50%;">
+                <img style="max-width: 100px;" src="<%= list[i]["thumbnail"] %>" alt="user_img" style="width:100%"/>
+            </div> -->
+
+            <div>Complain no. <%=j+1%> : <strong>
+                    <span><%= complain[j]["complan"] %></span></strong>
+                <span class="compid" style="display: none;"><%= complain[j]["id"] %></span>
+            </div>
+
+            <div> Status :- <%= complain[j]["complain_status"] %></div>
+            <div>Priority level :-<%= complain[j]["complain_priority"] %></div>
+        </div>
+
+        <footer class="w3-container w3-blue">
+            <button id=`close-${j}` class="cls" data-complain="<%= complain[j]['id'] %>">Close</button>
+            <button class="frwd" data-complain="<%= complain[j]['id'] %>">Forward</button>
+            <button class="res" data-complain="<%= complain[j]['id'] %>">Resolved</button>
+            <form class="revi">
+                <span><input type="text" class="review" placeholder="write a review on complaint" /><br></span>
+                <span><button class="rev" type="submit" data-review=""
+                        data-complain="<%= complain[j]['id'] %>">Review</button></span>
+            </form>
+        </footer>
+
+        <%  } %>
+        <%  } %>
+        <%  } %>
+                
+    </div>
+
+
+</center>
+    <%- include('partials/footer') %>
+</body>
+
+</html>
